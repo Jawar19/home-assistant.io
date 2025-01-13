@@ -352,6 +352,31 @@ The `state_translated` function returns a translated state of an entity using a 
 
 {% endraw %}
 
+### Availability
+
+Both state- and trigger-based templates can have an availability template which suppress further rendering of other templates if the availability renders as `False`.
+
+If the template either fails to render or returns True, "1", "true", "yes", "on", "enable", or a non-zero number, the entity will be available. For any other value, the entity will be `unavailable`. Note that the string comparison not case sensitive; `"TrUe"` and `"yEs"` are allowed.
+
+It can be important to understand the implications of suppressing other state attributes when the entity goes `unavailable`.
+
+With example as below, if the entity has the icon `mdi:on` and the entity goes unavailable, the icon will remain `mdi:on` until the entity comes back as available. At which point, it will again render the icon according to it's template.
+
+#### Availability use example
+
+{% raw %}
+
+```yaml
+template:
+  - sensor:
+      - name: "Transmission Up Speed"
+        unit_of_measurement: "kB/s"
+        state: "{{ states.sensor.test_sensor.state }}"
+        availability: "{{ is_state('sensor.test_sensor', 'on') }}"
+        icon: "{% if states.sensor.test_sensor.state == 'on' %}mdi:on{% else %}mdi:off{% endif %}"
+```
+
+{% endraw %}
 
 ### Working with groups
 
