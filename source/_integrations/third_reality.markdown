@@ -13,6 +13,7 @@ ha_domain: third_reality
 ha_integration_type: integration
 works_with:
   - zigbee
+  - matter
 ha_platforms:
   - binary_sensor
   - button
@@ -23,6 +24,7 @@ ha_iot_standard: zigbee
 ha_brand: true
 ---
 
+[Link text]()
 [Third Reality](https://3reality.com) is a member of the Works with Home Assistant partner program for their Zigbee products. Third Reality is committed to making sure their products are up-to-date and ready to use in Home Assistant.
 
 Third Reality Zigbee devices work locally and integrate seamlessly with the Zigbee integration in Home Assistant (Zigbee stick required).
