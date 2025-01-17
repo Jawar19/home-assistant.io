@@ -354,13 +354,13 @@ The `state_translated` function returns a translated state of an entity using a 
 
 ### Availability
 
-Both state- and trigger-based templates can have an availability template which suppress further rendering of other templates if the availability renders as `False`.
+Both state- and trigger-based templates can have an availability template that suppresses further rendering of other templates if the availability renders as `False`.
 
-If the template either fails to render or returns True, "1", "true", "yes", "on", "enable", or a non-zero number, the entity will be available. For any other value, the entity will be `unavailable`. Note that the string comparison not case sensitive; `"TrUe"` and `"yEs"` are allowed.
+If the template either fails to render or returns True, "1", "true", "yes", "on", "enable", or a non-zero number, the entity will be available. For any other value, the entity will be `unavailable`. Note that the string comparison is not case-sensitive; `"TrUe"` and `"yEs"` are allowed.
 
 It can be important to understand the implications of suppressing other state attributes when the entity goes `unavailable`.
 
-With example as below, if the entity has the icon `mdi:on` and the entity goes unavailable, the icon will remain `mdi:on` until the entity comes back as available. At which point, it will again render the icon according to it's template.
+For example, if the entity has the icon `mdi:on` and becomes unavailable, the icon will remain `mdi:on` until the entity becomes available. At that point, it will again render the icon according to its template.
 
 #### Availability use example
 
