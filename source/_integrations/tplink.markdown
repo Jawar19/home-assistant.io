@@ -14,6 +14,7 @@ ha_category:
   - Sensor
   - Siren
   - Switch
+  - Vacuum
 ha_release: 0.89
 ha_iot_class: Local Polling
 ha_config_flow: true
@@ -35,11 +36,12 @@ ha_platforms:
   - sensor
   - siren
   - switch
+  - vacuum
 ha_dhcp: true
 ha_integration_type: integration
 ---
 
-The `tplink` integration allows you to control your [TP-Link Kasa Smart Home Devices](https://www.tp-link.com/kasa-smart/) and [TP-Link Tapo Devices](https://www.tapo.com/) such as cameras, lights, plugs, wall switches, hubs, and hub-attached devices.
+The `tplink` integration allows you to control your [TP-Link Kasa Smart Home Devices](https://www.tp-link.com/kasa-smart/) and [TP-Link Tapo Devices](https://www.tapo.com/) such as cameras, lights, plugs, wall switches, vacuums, hubs, and hub-attached devices.
 
 ## How you can use this integration
 
