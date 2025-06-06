@@ -35,6 +35,10 @@ An example of a Statistics graph that shows hourly production per module for the
 
 ![Screenshot hourly production Statistics graph](/images/integrations/solaredge_modules/hourly_production.png)
 
+{% note %}
+The statistic IDs below are examples. It's recommended to press on **SHOW VISUAL EDITOR** to select the statistics based on their name instead.
+{% endnote %}
+
 ```yaml
 chart_type: line
 period: hour
@@ -73,6 +77,10 @@ days_to_show: 30
 ### SQL
 
 To identify problematic modules, you could set up the [`SQL`](/integrations/sql/) integration with the following:
+
+{% note %}
+The SQL code contains a couple of TODOs for you to adjust the threshold and to select the proper modules based on your solar installation. In the example the panels on the east side have ` 1.1.` while the ones on the west have ` 1.2.`.
+{% endnote %}
 
 Name: SolarEdge low production modules (East)
 
