@@ -1297,7 +1297,7 @@ would return ["Green"] and in the last example it returns ["g"].
 ## State selector
 
 The state selector shows a list of states for a provided entity of which
-one can be selected.
+one or more can be selected.
 
 ![Screenshot of an state selector](/images/blueprints/selector-state.png)
 
@@ -1306,10 +1306,17 @@ entity_id:
   description: The entity ID of which an state can be selected from.
   type: string
   required: true
+multiple:
+  description: >
+    Allows selecting multiple states. If set to `true`, the resulting value of
+    this selector will be a list instead of a single string value.
+  type: boolean
+  default: false
+  required: false
 {% endconfiguration %}
 
 The output of this selector is the select state (not the translated or
-prettified name shown in the frontend).
+prettified name shown in the frontend), or a list of states if `multiple` is true.
 
 For example: `heat_cool`.
 
