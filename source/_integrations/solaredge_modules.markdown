@@ -133,15 +133,55 @@ SELECT
 FROM
     ModuleProduction mp, AverageProduction ap -- Implicit cross join, AP will have 1 row
 WHERE
-    -- TODO: Adjust the 96% threshold if needed
-    mp.total_production < (0.96 * ap.average_total_production)
+    -- TODO: Adjust the 95% threshold if needed
+    mp.total_production < (0.95 * ap.average_total_production)
     AND ap.average_total_production IS NOT NULL
     AND ap.average_total_production > 0 -- Avoid division by zero if no production at all
 ) AS result
 ```
 
 This will result in a sensor with state e.g.: `SolarEdge 1.1.13 (95.7%), SolarEdge 1.1.14 (95.2%)`
-You can use this sensor in automations, e.g., to notify you if its value changes.
+
+Because this SQL sensor will uncessarily be updating every 30 seconds, in the [SQL integration entries page](https://my.home-assistant.io/redirect/integration/?domain=sql), select 3 dots, **System options**, uncheck **Enable polling for changes**, and select **UPDATE**.
+
+Finally, create an automation that updates the sensors and notifies you. Example:
+
+{% note %}
+Update the SQL sensor entity IDs to match your setup.
+{% endnote %}
+
+```yaml
+alias: "Notify: Low solar production modules"
+triggers:
+  - trigger: time
+    at: "11:00:00"
+conditions: []
+actions:
+  - action: homeassistant.update_entity
+    metadata: {}
+    data:
+      entity_id:
+        - sensor.solaredge_low_production_modules_east
+        - sensor.solaredge_low_production_modules_west
+  - if:
+      - condition: template
+        value_template: |-
+          {{ states('sensor.solaredge_low_production_modules_east') != '' or
+             states('sensor.solaredge_low_production_modules_west') != '' }}
+    then:
+      - action: persistent_notification.create
+        metadata: {}
+        data:
+          message: >-
+            East: {{ states('sensor.solaredge_low_production_modules_east') |
+            default('N/A') }}
+
+            West: {{ states('sensor.solaredge_low_production_modules_west') |
+            default('N/A') }}
+          title: Low production detected on solar modules
+          notification_id: solaredge_modules_low_production_alert
+mode: single
+```
 
 ## Removing the integration
 
