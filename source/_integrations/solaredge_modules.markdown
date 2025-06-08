@@ -150,6 +150,7 @@ Finally, create an automation that updates the sensors and notifies you. Example
 Update the SQL sensor entity IDs to match your setup.
 {% endnote %}
 
+{% raw %}
 ```yaml
 alias: "Notify: Low solar production modules"
 triggers:
@@ -158,7 +159,6 @@ triggers:
 conditions: []
 actions:
   - action: homeassistant.update_entity
-    metadata: {}
     data:
       entity_id:
         - sensor.solaredge_low_production_modules_east
@@ -170,7 +170,6 @@ actions:
              states('sensor.solaredge_low_production_modules_west') != '' }}
     then:
       - action: persistent_notification.create
-        metadata: {}
         data:
           message: >-
             East: {{ states('sensor.solaredge_low_production_modules_east') |
@@ -182,6 +181,7 @@ actions:
           notification_id: solaredge_modules_low_production_alert
 mode: single
 ```
+{% endraw %}
 
 ## Removing the integration
 
