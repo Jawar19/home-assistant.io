@@ -16,7 +16,7 @@ After adding a new device, you might find the automatically assigned entity ID t
 To change entity attributes, follow these steps:
 
 1. Go to {% my entities title="**Settings** > **Devices & services** > **Entities**" %} and select the entity from the list.
-2. In the top right corner, select the {% icon "mdi:cog" %} cog icon.
+2. In the top-right corner, select the {% icon "mdi:cog" %} cog icon.
 
    ![Entity dialog box with cog icon.](/images/docs/configuration/customizing-entity-dialog.png)
 
