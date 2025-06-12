@@ -21,7 +21,7 @@ To change entity attributes, follow these steps:
    ![Entity dialog box with cog icon.](/images/docs/configuration/customizing-entity-dialog.png)
 
 3. Enter or edit the attributes:
-   - For example, the entity ID here could be shortened to `binary_sensor.living_room_motion_1`.
+   - For example, the entity ID here could be shortened to `binary_sensor.lumi_sensor_aq2_opening`.
      - Do not change the domain of the entity - the part before the `.` (binary_sensor, in this example).
      - You can use lowercase letters, numbers, and underscores.
      - The ID must not start or end with an underscore.
