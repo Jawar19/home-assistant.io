@@ -139,18 +139,18 @@ Follow these steps to add a new end device to you Z-Wave network. If you are loo
    - The Z-Wave controller is now in inclusion mode, ready to add an end device to the network.
 4. Check, if your end device supports SmartStart:
    - On the packaging, check for the SmartStart label.
-   - Find the QR code. It can be on the packaging or on the device itself.
+   - Find the QR code. It can be on the packaging or on the end device itself.
      - If you can't see it on the device, open the battery compartment. The QR code might be inside.
-5. Depending on whether your device supports SmartStart, follow the steps in either option 1 or 2:
+5. Depending on whether your end device supports SmartStart, follow the steps in either option 1 or 2:
    - **Option 1: your end device supports SmartStart**:
      - Select **Scan QR code** and scan the QR code on your device.
      - If scanning does not work (for example due to missing HTTPS), paste the QR code content as text from a different QR reader and select **Submit**.
      - Turn the end device on. If it was already on, you might need to power-cycle it.
-   - **Option 2: your device does not support SmartStart**:
+   - **Option 2: your end device does not support SmartStart**:
      - Set the end device in inclusion mode. Refer to the device manual to see how this is done.
-     - If your end device is included using S2 security, you may be prompted to enter a PIN number provided with your device. Often, this PIN is provided with the documentation _and_ is also printed on the device itself. For more information on secure inclusion, refer to [this section](/integrations/zwave_js/#should-i-use-secure-inclusion).
+     - If your end device is included using S2 security, you may be prompted to enter a PIN number provided with your end device. Often, this PIN is provided with the documentation _and_ is also printed on the device itself. For more information on secure inclusion, refer to [this section](/integrations/zwave_js/#should-i-use-secure-inclusion).
 6. The UI should confirm that the end device was added. After a short while (seconds to minutes), the entities should also be created.
-7. **Troubleshooting**: If the controller fails to add/find your device, cancel the inclusion process.
+7. **Troubleshooting**: If the controller fails to add/find your end device, cancel the inclusion process.
    - In some cases, it might help to first [remove](/integrations/zwave_js/#removing-a-device-from-the-z-wave-network) an end device (exclusion) before you add it, even when the end device has not been added to this Z-Wave network yet.
    - Another approach would be to factory reset the end device. Refer to the device manual to see how this is done.
 
