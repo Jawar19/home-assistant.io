@@ -129,43 +129,46 @@ Use this My button:
 While your Z-Wave mesh is permanently stored on your dongle, the additional metadata is not. When the Z-Wave integration starts up the first time, it will interview your entire Z-Wave network. Depending on the number of devices paired with the Z-Wave dongle, this can take a while. You can speed up this process by manually waking up your battery-powered devices. Most of the time, this is a button press on those devices (see their manual). It is not necessary to exclude and re-include devices from the mesh.
 {% endnote %}
 
-### Adding a new device to the Z-Wave network
+### Adding a new end device to the Z-Wave network
+
+Follow these steps to add a new end device to you Z-Wave network. If you are looking to add a new controller/dongle, refer to the steps on [setting up a Z-Wave JS server](#setting-up-a-z-wave-js-server).
 
 1. In Home Assistant, go to {% my integrations title="**Settings** > **Devices & services**" %}.
 2. Select the Z-Wave integration. Then select **Configure**.
 3. Select **Add device**.
-   - The Z-Wave controller is now in inclusion mode.
-4. Check, if your device supports SmartStart:
+   - The Z-Wave controller is now in inclusion mode, ready to add an end device to the network.
+4. Check, if your end device supports SmartStart:
    - On the packaging, check for the SmartStart label.
    - Find the QR code. It can be on the packaging or on the device itself.
+     - If you can't see it on the device, open the battery compartment. The QR code might be inside.
 5. Depending on whether your device supports SmartStart, follow the steps in either option 1 or 2:
-   - **Option 1: your device supports SmartStart**:
+   - **Option 1: your end device supports SmartStart**:
      - Select **Scan QR code** and scan the QR code on your device.
      - If scanning does not work (for example due to missing HTTPS), paste the QR code content as text from a different QR reader and select **Submit**.
-     - Turn the device on. If it was already on, you might need to power-cycle it.
+     - Turn the end device on. If it was already on, you might need to power-cycle it.
    - **Option 2: your device does not support SmartStart**:
-     - Set the device in inclusion mode. Refer to the device manual to see how this is done.
-     - If your device is included using S2 security, you may be prompted to enter a PIN number provided with your device. Often, this PIN is provided with the documentation _and_ is also printed on the device itself. For more information on secure inclusion, refer to [this section](/integrations/zwave_js/#should-i-use-secure-inclusion).
-6. The UI should confirm that the device was added. After a short while (seconds to minutes), the entities should also be created.
+     - Set the end device in inclusion mode. Refer to the device manual to see how this is done.
+     - If your end device is included using S2 security, you may be prompted to enter a PIN number provided with your device. Often, this PIN is provided with the documentation _and_ is also printed on the device itself. For more information on secure inclusion, refer to [this section](/integrations/zwave_js/#should-i-use-secure-inclusion).
+6. The UI should confirm that the end device was added. After a short while (seconds to minutes), the entities should also be created.
 7. **Troubleshooting**: If the controller fails to add/find your device, cancel the inclusion process.
-   - In some cases, it might help to first [remove](/integrations/zwave_js/#removing-a-device-from-the-z-wave-network) a device (exclusion) before you add it, even when the device has not been added to this Z-Wave network yet.
-   - Another approach would be to factory reset the device. Refer to the device manual to see how this is done.
+   - In some cases, it might help to first [remove](/integrations/zwave_js/#removing-a-device-from-the-z-wave-network) an end device (exclusion) before you add it, even when the end device has not been added to this Z-Wave network yet.
+   - Another approach would be to factory reset the end device. Refer to the device manual to see how this is done.
 
 **Important:**
 
 1. **Do not move your Z-Wave stick to include devices.** Moving the controller is no longer necessary and leads to broken routes.
 2. **Do not initiate device inclusion from the Z-Wave stick itself.** This is no longer supported.
 
-### Removing a device from the Z-Wave network
+### Removing an end device from the Z-Wave network
 
-Do this before using the device with another controller, or when you don't use the device anymore. It removes the device from the Z-Wave network stored on the controller. It also removes the device and all its entities from Home Assistant. You can not join a device to a new network if it is still paired with a controller.
+Do this before using the end device with another controller, or when you don't use the end device anymore. It removes the end device from the Z-Wave network stored on the controller. It also removes the end device and all its entities from Home Assistant. You can not join an end device to a new network while it is still paired with a controller.
 
 1. In Home Assistant, go to {% my integrations title="**Settings** > **Devices & services**" %}.
 2. Select the **Z-Wave** integration. Then, select **Configure**.
 3. Select **Remove device**, then **Start exclusion**.
    - The Z-Wave controller is now in exclusion mode.
-4. Put the device you want to remove in exclusion mode. Refer to its manual how this is done.
-5. The UI should confirm that the device was removed and the device and entities will be removed from Home Assistant.
+4. Put the end device you want to remove in exclusion mode. Refer to its manual how this is done.
+5. The UI should confirm that the end device was removed and the device and entities will be removed from Home Assistant.
 
 ## Migrating a Z-Wave network to a new controller
 
@@ -202,7 +205,7 @@ It's recommended to create a backup before making any major changes to your Z-Wa
 
 ## Resetting a Z-Wave controller
 
-It is recommended to back up your Z-Wave network before resetting the device.
+It is recommended to back up your Z-Wave network before resetting the controller device.
 
 - The controller will forget all devices it is paired with.
 - All Z-Wave devices for this network will be removed from Home Assistant.
