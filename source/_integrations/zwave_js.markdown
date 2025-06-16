@@ -173,8 +173,8 @@ Do this if you have an existing Z-Wave network and want to use a new controller.
 
 ### Prerequisites
 
-- Administrator rights on Home Assistant
-- If you want to migrate from a 500 series controller, before starting migration, [update the controller to SDK 6.61 or higher](https://aeotec.freshdesk.com/support/solutions/articles/6000252294-z-stick-gen5-v1-02-firmware-update)
+- Administrator rights in Home Assistant
+- If you want to migrate from a 500 series controller, before starting migration, [update the controller to SDK 6.61+](https://aeotec.freshdesk.com/support/solutions/articles/6000252294-z-stick-gen5-v1-02-firmware-update)
 
 ### To migrate a Z-Wave network to a new controller
 
