@@ -131,7 +131,7 @@ While your Z-Wave mesh is permanently stored on your dongle, the additional meta
 
 ### Adding a new end device to the Z-Wave network
 
-Follow these steps to add a new end device to you Z-Wave network. If you are looking to add a new controller/dongle, refer to the steps on [setting up a Z-Wave JS server](#setting-up-a-z-wave-js-server).
+Follow these steps to add a new end device to your Z-Wave network. If you are looking to add a new controller/dongle, refer to the steps on [setting up a Z-Wave JS server](#setting-up-a-z-wave-js-server).
 
 1. In Home Assistant, go to {% my integrations title="**Settings** > **Devices & services**" %}.
 2. Select the Z-Wave integration. Then select **Configure**.
