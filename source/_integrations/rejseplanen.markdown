@@ -16,7 +16,7 @@ ha_quality_scale: legacy
 ---
 
 The `rejseplanen` {% term integration %} will provide you with travel details for Danish public transport, using multidepartureborad data from [Rejseplanen](https://www.rejseplanen.dk/). 
-ou will ahve to setup the central entity that contains the API key and then subsequent sub-entries for each stop/station you want to see. The API will be called from the central entity, ensuring the limit ot the free access is not breached.
+you will have to setup the central entity that contains the API key and then subsequent sub-entries for each stop/station you want to see. The API will be called from the central entity, ensuring the limit ot the free access is not breached.
 All setup for this integration is done in UI configuration.
 
 ## Prerequisites
