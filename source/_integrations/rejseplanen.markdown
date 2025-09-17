@@ -1,18 +1,16 @@
 ---
 title: Rejseplanen
 description: Instructions on how to integrate timetable data for Danish Rejseplanen within Home Assistant.
+ha_release: 0.88
 ha_category:
   - Transport
 ha_iot_class: Cloud Polling
-ha_release: 0.88
+ha_quality_scale: "No Score"
+ha_config_flow: true
+ha_codeowners:
+  - '@Jawar19'
 ha_domain: rejseplanen
-ha_platforms:
-  - sensor
 ha_integration_type: integration
-related:
-  - docs: /docs/configuration/
-    title: Configuration file
-ha_quality_scale: legacy
 ---
 
 The `rejseplanen` {% term integration %} will provide you with travel details for Danish public transport, using multidepartureborad data from [Rejseplanen](https://www.rejseplanen.dk/). 
@@ -21,7 +19,9 @@ All setup for this integration is done in UI configuration.
 
 ## Prerequisites
 In order to use the integration you must uptain an API key from Rejseplanen.dk. You can apply for this by using the [request form](https://labs.rejseplanen.dk/hc/da/requests/new) on their webpage. Follow the steps for the application and remember to request it as a provate user.
-Keep in mind, the private API key allows for 50.000 calls/month. 
+Keep in mind, the private API key allows for 50.000 calls/month.
+
+If you have an existing YAML configuration entry for the Rejseplanen version 1 integration in your instance, please remove the configuration prior to updating or installing the new Rejseplanen v2.x
 
 
 ## stop_id
