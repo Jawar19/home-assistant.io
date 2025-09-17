@@ -79,20 +79,7 @@ You will see an output like this:
 
 Find the name of your stop in the list and the "id" is the parameter marked as extid to be used in the `stop_id:` list.
 
-## Examples
-
-A more extensive example on how to use this sensor:
-
-```yaml
-# Example configuration.yaml entry with the correct use of authentication.
-sensor:
-  - platform: rejseplanen
-    name: "Roskilde St."
-    authentication: "YOUR_API_KEY"
-    stop_id:
-      - 860061707
-```
-
+## Transportation Types
 The sensor can filter the timetables by one or more types. The known types are listed in the table below.
 
 | Departure type | Description             |
