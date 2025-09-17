@@ -11,6 +11,9 @@ ha_codeowners:
   - '@Jawar19'
 ha_domain: rejseplanen
 ha_integration_type: integration
+related:
+  - url: https://labs.rejseplanen.dk/hc/en-us/articles/21553113674909-Adgang-til-data-fra-Labs
+  - title: Rejseplanen Labs
 ---
 
 The `rejseplanen` {% term integration %} will provide you with travel details for Danish public transport, using multidepartureborad data from [Rejseplanen](https://www.rejseplanen.dk/). 
