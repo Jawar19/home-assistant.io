@@ -15,7 +15,7 @@ related:
     title: Rejseplanen Labs
 ---
 
-The `rejseplanen` {% term integration %} will provide you with travel details for Danish public transport, using multidepartureboard data from [Rejseplanen](https://www.rejseplanen.dk/).
+The `rejseplanen` {% term integration %} will provide you with travel details for Danish public transport, using multi-departure board data from [Rejseplanen](https://www.rejseplanen.dk/).
 
 {% important %}
 As part of conforming to Home Assistant standards, all extra attributes previously available on sensors have been removed. In a future release, the integration will provide an {% term action %} to retrieve the full list of departures with all details. This will allow for more flexible data access while maintaining proper entity standards.
@@ -23,9 +23,9 @@ As part of conforming to Home Assistant standards, all extra attributes previous
 
 ## Setup
 
-The Rejseplanen {% term integration %} have moved from {% term platform %} setup to a more friendly UI setup. The {% term integration %} consist of two main configurable types. Firstly the Service device, a hidden coordinator that handles the communication with the Rejseplanen cloud API and stores the data from the aforementioned API. Secondly a number of sub-entries called "stops" that sorts and displays the data of the next departure to the user as a device with entities.
+The Rejseplanen {% term integration %} has moved from {% term platform %} setup to a more friendly UI setup. The {% term integration %} consists of two main configurable types. Firstly the Service device, a hidden coordinator that handles the communication with the Rejseplanen cloud API and stores the data from the aforementioned API. Secondly a number of sub-entries called "stops" that sorts and displays the data of the next departure to the user as a device with entities.
 
-{% term platform "Platform" %} setup for this {% term integration %} have been deprecated and should be removed from the configuration file. 
+{% term platform "Platform" %} setup for this {% term integration %} has been deprecated and should be removed from the configuration file.
 
 [Read more about _configuration file_](https://www.home-assistant.io/docs/configuration/)
 
@@ -93,34 +93,50 @@ The stop ID is a unique identifier for each public transport stop or station. Yo
 
 The easiest way to find your stop ID is to search for the stop by name:
 
-1. Open a web browser and visit: `https://www.rejseplanen.dk/api/location.name?input=<search_term>&accessId=<YOUR_API_KEY>`
+1. Open a web browser and visit: <https://www.rejseplanen.dk/api/location.name?input=><search_term>&accessId=<YOUR_API_KEY>
 2. Replace `<search_term>` with the name of your stop (for example, "Roskilde St." or "Copenhagen Airport").
 3. Replace `<YOUR_API_KEY>` with your Rejseplanen API key.
 4. Look for your stop in the XML response and find the `extId` attribute—this is your stop ID.
 
 For example, searching for "Roskilde St." would look like:
 
-```
-https://www.rejseplanen.dk/api/location.name?input=Roskilde%20St.&accessId=YOUR_API_KEY
-
-```
+<https://www.rejseplanen.dk/api/location.name?input=Roskilde%20St.&accessId=YOUR_API_KEY>
 
 The response will include stops matching your search:
 
 ```xml
 <LocationList xmlns="http://hacon.de/hafas/proxy/hafas-proxy" serverVersion="2.49.1" dialectVersion="2.45-Rejseplanen" requestId="r2gm7s2iiist82wg">
   <TechnicalMessages>
-    <TechnicalMessage key="requestTime">2025-06-16 11:53:58</TechnicalMessage>
-    <TechnicalMessage key="backendInfo">ttp=16601#16676 plancode0=72z27 planid=1749820065 planid0=1749820065 planid_adr=1746438686 plancode_adr=52iz0 planid_poi=1746518115 plancode_poi=538ad srvv=5.45.Rejseplanen.17.3.12 (customer/hcudk/release/2025.2.0.3) [2025-04-21] tlibv=TRFVER: rel/dk/11.00.8 2025-02-10 16:37:34 +0100 Rejsekort v11.0.8 jno=1</TechnicalMessage>
-  </TechnicalMessages>
-  <StopLocation id="A=1@O=Roskilde St.@X=12088550@Y=55639093@U=86@L=8600617@B=1@p=1749820065@" extId="8600617" isMainMast="true" name="Roskilde St." lon="12.08855" lat="55.639093" weight="22212" products="239" minimumChangeDuration="PT5M">
+    <TechnicalMessage key="requestTime">
+      2025-06-16 11:53:58
+    </TechnicalMessage>
+    <TechnicalMessage key="backendInfo">
+      ttp=16601#16676 plancode0=72z27 planid=1749820065 
+      planid0=1749820065 planid_adr=1746438686 plancode_adr=52iz0 
+      planid_poi=1746518115 plancode_poi=538ad 
+      srvv=5.45.Rejseplanen.17.3.12 (customer/hcudk/release/2025.2.0.3) 
+      [2025-04-21] tlibv=TRFVER: rel/dk/11.00.8 2025-02-10 16:37:34 
+      +0100 Rejsekort v11.0.8 jno=1
+    </TechnicalMessage>
+    </TechnicalMessages>
+    <StopLocation 
+    id="A=1@O=Roskilde St.@X=12088550@Y=55639093@U=86@L=8600617@B=1@p=1749820065@" 
+    extId="8600617" 
+    isMainMast="true" 
+    name="Roskilde St." 
+    lon="12.08855" 
+    lat="55.639093" 
+    weight="22212" 
+    products="239" 
+    minimumChangeDuration="PT5M">
     ...
-  </StopLocation>
-  ...
-</LocationList>
-```
+    </StopLocation>
+    ...
+  </LocationList>
+  ```
 
-In this example, the stop ID is `8600617`. You can see it in the `extId` attribute of the `StopLocation` element.
+  In this example, the stop ID is `8600617`. You can see it in the `extId` attribute of the `StopLocation` element.
+
 
 #### Search by coordinates
 
@@ -128,28 +144,57 @@ If you prefer to search by location coordinates:
 
 1. Find your location on [OpenStreetMap](https://www.openstreetmap.org).
 2. The URL will show the coordinates (for example: `#map=18/56.15756/10.20674`).
-3. Visit: `https://www.rejseplanen.dk/api/location.nearbystops?originCoordLong=<longitude>&originCoordLat=<latitude>&maxNo=10&accessId=<YOUR_API_KEY>`
+3. Visit: <https://www.rejseplanen.dk/api/location.nearbystops?originCoordLong=<longitude>&originCoordLat=<latitude>&maxNo=10&accessId=<YOUR_API_KEY>>
 4. Replace the coordinates and API key with your values.
 5. The response will show the 10 nearest stops to your location. Find the one you want and use its `extId` as the stop ID.
 
 Example search for nearby stops in Copenhagen:
 
-```
-https://www.rejseplanen.dk/api/location.nearbystops?originCoordLong=12.088367&originCoordLat=55.637912&maxNo=10&accessId=YOUR_API_KEY
-```
+<https://www.rejseplanen.dk/api/location.nearbystops?originCoordLong=12.088367&originCoordLat=55.637912&maxNo=10&accessId=YOUR_API_KEY>
 
 Result:
 
 ```xml
-<LocationList xmlns="http://hacon.de/hafas/proxy/hafas-proxy" serverVersion="2.49.1" dialectVersion="2.45-Rejseplanen" requestId="m54u7sm8gq4pww8x">
+<LocationList
+  xmlns="http://hacon.de/hafas/proxy/hafas-proxy"
+  serverVersion="2.49.1"
+  dialectVersion="2.45-Rejseplanen"
+  requestId="m54u7sm8gq4pww8x">
   <TechnicalMessages>
-    <TechnicalMessage key="requestTime">2025-06-16 12:28:27</TechnicalMessage>
-    <TechnicalMessage key="backendInfo">ttp=16601#16676 plancode0=72z27 planid=1749820065 planid0=1749820065 planid_adr=1746438686 plancode_adr=52iz0 planid_poi=1746518115 plancode_poi=538ad srvv=5.45.Rejseplanen.17.3.12 (customer/hcudk/release/2025.2.0.3) [2025-04-21] tlibv=TRFVER: rel/dk/11.00.8 2025-02-10 16:37:34 +0100 Rejsekort v11.0.8 jno=1</TechnicalMessage>
+    <TechnicalMessage key="requestTime">
+      2025-06-16 12:28:27
+    </TechnicalMessage>
+    <TechnicalMessage key="backendInfo">
+      ttp=16601#16676 plancode0=72z27 planid=1749820065
+      planid0=1749820065 planid_adr=1746438686 plancode_adr=52iz0
+      planid_poi=1746518115 plancode_poi=538ad srvv=5.45.Rejseplanen
+      (customer/hcudk/release/2025.2.0.3) [2025-04-21]
+      tlibv=TRFVER: rel/dk/11.00.8 2025-02-10 16:37:34 +0100
+      Rejsekort v11.0.8 jno=1
+    </TechnicalMessage>
   </TechnicalMessages>
-  <StopLocation id="A=1@O=Roskilde St. (togbus)@X=12088388@Y=55637826@U=86@L=8651617@" extId="8651617" name="Roskilde St. (togbus)" lon="12.088388" lat="55.637826" weight="1563" dist="10" products="8" minimumChangeDuration="PT5M">
+  <StopLocation
+    id="A=1@O=Roskilde St. (togbus)@X=12088388@Y=55637826@U=86@L=8651617@"
+    extId="8651617"
+    name="Roskilde St. (togbus)"
+    lon="12.088388"
+    lat="55.637826"
+    weight="1563"
+    dist="10"
+    products="8"
+    minimumChangeDuration="PT5M">
     ...
   </StopLocation>
-  <StopLocation id="A=1@O=Roskilde St. (togbus)@X=12088334@Y=55637799@U=86@L=8650617@" extId="8650617" name="Roskilde St. (togbus)" lon="12.088334" lat="55.637799" weight="1563" dist="13" products="8" minimumChangeDuration="PT5M">
+  <StopLocation
+    id="A=1@O=Roskilde St. (togbus)@X=12088334@Y=55637799@U=86@L=8650617@"
+    extId="8650617"
+    name="Roskilde St. (togbus)"
+    lon="12.088334"
+    lat="55.637799"
+    weight="1563"
+    dist="13"
+    products="8"
+    minimumChangeDuration="PT5M">
     ...
   </StopLocation>
 </LocationList>
@@ -161,8 +206,8 @@ Find the stop you want in the list and use the `extId` attribute as your stop ID
 
 When creating a stop subentry, you can optionally filter departures by:
 
-- **Direction**: Only show departures going to a specific destination (for example, "Downtown" or "Airport").
-- **Transportation type**: Only show specific types of transport (buses, trains, metro, etc.).
+- **Direction**: Only show departures going to a specific destination (for example, "Downtown" or "Airport")
+- **Transportation type**: Only show specific types of transport (buses, trains, metro, and similar)
 
 If you don't set any filters, the integration will show all departures from that stop.
 
@@ -172,17 +217,13 @@ To find the exact direction values to use for filtering, you need to check what 
 
 You can find available directions by making a test API call:
 
-```html
-https://www.rejseplanen.dk/api/departureBoard?id=<YOUR_STOP_ID>&accessId=<YOUR_API_KEY>
-```
+<https://www.rejseplanen.dk/api/departureBoard?id=<YOUR_STOP_ID>&accessId=<YOUR_API_KEY>>
 
 Example response showing the direction attribute:
 
 ```xml
 <DepartureBoard>
   <Departure name="1A" type="BUS" direction="Nørrebro St." ... />
-                                     ^^^^^^^^^^^^^^^^^
-                                     Direction value to use for filtering
   <Departure name="2C" type="BUS" direction="Airport" ... />
   <Departure name="S" type="S" direction="København H" ... />
 </DepartureBoard>
